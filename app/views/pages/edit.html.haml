@@ -10,3 +10,4 @@
   %label Section
   = f.select :section_id, Section.find(:all, :order => 'name ASC').collect{ |s| [ s.name, s.id ] }
   = f.submit 'Save'
+  = submit_tag 'Save and continue editing', {:name => 'sac'}

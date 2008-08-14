@@ -52,7 +52,12 @@ class PagesController < ApplicationController
       if @page.save
         format.html do
           flash[:success] = "#{@page} updated"
-          redirect_to @page
+          if params[:sac]
+            flash.now[:success] = "#{@page} updated"
+            redirect_to [:edit, @page]
+          else
+            redirect_to @page
+          end
         end
         format.json { render :json => { :html => @page.rendered }, :status => :ok }
       else
